@@ -1,5 +1,5 @@
 import sqlite3
-from pathlib import Path
+from pathlib import Path # testes testes
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
