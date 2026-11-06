@@ -39,15 +39,29 @@ automaticamente (`secret_key.txt`). Ela não vai para o GitHub (veja `.gitignore
 
 ## Controles
 
-- **Computador:** setas ← → ou A / D. Pausa com P ou Esc.
-- **Celular:** arraste o dedo sobre o jogo ou use os botões ◀ ▶.
+- **Computador:** setas ← → ou A / D. **Shift** para correr. Pausa com P ou Esc.
+- **Celular:** arraste o dedo sobre o jogo ou use os botões ◀ ▶ e ⚡ Correr.
+- A corrida gasta energia (~2 s) e recarrega sozinha (~4,5 s). Se esgotar,
+  só volta quando a barra chegar a 30%. Arrastar com mouse/dedo não usa
+  corrida nem o aumento de velocidade por nível: o barco vai direto ao cursor.
 
 ## Regras
 
 - Resíduos que tocam a água reduzem a saúde da lagoa (e a água fica mais turva).
 - Peixes e tartarugas que pulam da água **não** devem ser recolhidos.
-- Sequências de acertos aumentam o multiplicador (até x3) e curam a lagoa.
-- A cada 200 pontos o nível sobe e o jogo acelera.
+- Sequências de acertos aumentam o multiplicador e curam a lagoa (a cada 10):
+  5 seguidos x1,5 · 10 x2 · 20 x3 · 40 x4. Errar (resíduo na água ou animal) zera.
+- Cada resíduo vale: `base × multiplicador × bônus de nível × bônus da rodada`.
+- **Níveis:** o 1º pede 200 pontos e cada nível seguinte pede 50 a mais (200, 250,
+  300...). O jogo acelera a cada nível, o barco também (+3% por nível, até +30%).
+- **Bônus de nível:** +25% nos pontos a cada 5 níveis (nível 6: +25%, 11: +50%...
+  até x2).
+- **Rodadas especiais** (a cada 5 níveis, 20 s, com faixa turquesa na tela):
+  *Chuva forte* (mais lixo, mais rápido, sem animais) e *Cardume na lagoa*
+  (muitos animais pulando). Resíduos valem x1,5 e, sem erros, há bônus fixo
+  de 100 pontos (+25 a cada rodada, até 300).
+- O servidor recalcula o nível e confere o teto de pontos por segundo
+  (`app.py`: `nivel_por_pontos`, `MAX_PONTOS_POR_SEGUNDO`).
 
 ## Banco de dados
 
